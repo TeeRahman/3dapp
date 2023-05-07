@@ -1,0 +1,258 @@
+html,
+body,
+* {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+body {
+    background-color: #F2F4F3;
+    min-height: 100vh;
+}
+
+
+.hero-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    min-height: 900px;
+}
+.hero-container-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-family: "Abel", sans-serif;
+    font-weight: 400;
+    padding: 0 10px;
+}
+.hero-container-child-row-1 {
+    height: 50vh;
+    min-height: 450px;
+    display: flex;
+    justify-content: space-between;
+}
+.hero-container-child-row-2,
+.hero-container-child-row-3 {
+    min-height: max(112.5px, 12.5vh);
+    display: flex;
+    justify-content: space-between;
+}
+
+.hero-container-child-row-3 {
+    height: auto;
+}
+
+.hero-container-child-row-3 h3 {
+    text-align: center;
+    margin-top: 1%;
+}
+
+.hero-container-child-row-1,
+.hero-container-child-row-2,
+.hero-container-child-row-3 {
+    margin-bottom: 4vh;
+}
+
+#r-1-c-1 {
+    width: 65%;
+    height: 100%;
+    border: 4px solid black;
+    background-color: #FBD1CF;
+    border-radius: 5px;
+}
+#r-1-c-2 {
+    width: 30%;
+    height: 100%;
+    border: 4px solid black;
+    background-color: #F9F9F9;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+#r-2-c-1,
+#r-2-c-2,
+#r-2-c-3 {
+    width: 30%;
+    height: 100%;
+    border: 4px solid #984D88;
+    background-color: #F9F9F9;
+    border-radius: 5px;
+}
+#r-3-c-1 {
+    width: 100%;
+    height: 100%;
+    border: 4px solid #3D5075;
+    background-color: #F9F9F9;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+#r-3-c-1 p {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.default-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.control-buttons {
+    max-width: 320px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.control-button-one,
+.control-button-two,
+.control-button-three,
+.control-button-four {
+    width: fit-content;
+    padding: 3px 10px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+}
+.control-button-one {
+    background-color: #009C63;
+    border-radius: 10px;
+}
+.control-button-two,
+.control-button-three,
+.control-button-four {
+    background-color: #9068E9;
+    border-radius: 10px;
+}
+.control-button-one:hover {
+    cursor: pointer;
+    font-size: 1.2rem;
+    background-color: #00CD82;
+}
+.control-button-two:hover {
+    cursor: pointer;
+    font-size: 1.2rem;
+    background-color: #B18EFF;
+}
+.control-button-three:hover {
+    cursor: pointer;
+    font-size: 1.2rem;
+    background-color: #7F7F7F;
+}
+.control-button-four:hover {
+    cursor: pointer;
+    font-size: 1.2rem;
+    background-color: #7F7F7F;
+}
+
+.comment-section h3{
+    margin-bottom: 5px;
+}
+
+.comment-container {
+    background-color: #F0F0F0;
+    min-height: 50px;
+    width: 90%;
+    margin: 5px auto;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 5px;
+}
+
+.comment {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.comment-info {
+    color: #6A6A6A;
+}
+
+.slides-image {
+    height: 80%;
+    width: 100%;
+    background-image: url("../../public/assets/images/coke-can.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: opacity 1s, background-image 1s;
+    opacity: 0;
+}
+.loaded {
+    opacity: 1;
+}
+.slides-image-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 0rem;
+    text-align: center;
+}
+
+.slides-image-overlay p {
+    width: 90%;
+}
+.slides-image-overlay:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 1rem;
+  }
+
+/**     MEDIA QUERIES   **/
+
+@media (max-width: 1000px) {
+    .hero-container-child-row-1,
+    .hero-container-child-row-2 {
+        flex-direction: column;
+    }
+
+    .hero-container-child-row-2 {
+        height: 30%;
+    }
+
+    #r-1-c-1,
+    #r-1-c-2 {
+        height: 50%;
+    }
+    #r-1-c-1,
+    #r-1-c-2,
+    #r-2-c-1,
+    #r-2-c-2,
+    #r-2-c-3,
+    #r-3-c-1 {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 550px) {
+    .hero-container-child {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .hero-container-child-row-3 {
+        height: 20%;
+    }
+}
+
+/** QA PASS 09/03 **/
