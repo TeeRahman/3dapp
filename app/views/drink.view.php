@@ -25,7 +25,7 @@
                         <div id="r-1-c-1">
                             <x3d id='wire' width="100%" height="100%">
                                 <scene>
-                                    <inline nameSpaceName="model" mapDEFToID="true" onclick="" url="./assets/x3d/<?= $endpoint ?>.x3d">
+                                    <inline id='model-inline' nameSpaceName="model" mapDEFToID="true" url="./assets/x3d/<?= $endpoint ?>.x3d">
                                 </scene>
                             </x3d>
                         </div>
@@ -42,20 +42,20 @@
                         <div class="default-text" id="r-2-c-1">
                             <h3>CAMERA</h3>
                             <div class="control-buttons">
-                                <div id="c-b-one" class="control-button-one" onclick="preView()">DEFAULT</div>
-                                <div id="c-b-two" class="control-button-two" onclick="frontView()">FRONT</div>
-                                <div id="c-b-three" class="control-button-three" onclick="topView()">TOP</div>
-                                <div id="c-b-four" class="control-button-four" onclick="bottomView()">BOTTOM</div>
+                                <div id="c-b-one" class="control-button-one" onclick="onPreView()">DEFAULT</div>
+                                <div id="c-b-two" class="control-button-two" onclick="onFrontView()">FRONT</div>
+                                <div id="c-b-three" class="control-button-three" onclick="onTopView()">TOP</div>
+                                <div id="c-b-four" class="control-button-four" onclick="onBottomView()">BOTTOM</div>
                             </div>
                             <p>Toggle the model view.</p>
                         </div>
                         <div class="default-text" id="r-2-c-2">
-                            <h3>ANIMATION</h3>
+                            <h3>ANIMATION & ZOOM</h3>
                             <div class="control-buttons">
                                 <div id="c-b-five" class="control-button-one">STOP</div>
-                                <div id="c-b-six" class="control-button-two" onclick="spin()">SPIN</div>
-                                <div id="c-b-seven" class="control-button-three">Y-ROTATE</div>
-                                <div id="c-b-eight" class="control-button-four">Z-ROTATE</div>
+                                <div id="c-b-six" class="control-button-two">SPIN</div>
+                                <div id="c-b-seven" class="control-button-three" onclick="onZoom('+')">+ ZOOM</div>
+                                <div id="c-b-eight" class="control-button-four" onclick="onZoom('-')">- ZOOM</div>
                             </div>
                             <p>Enjoy the model through animations!</p>
                         </div>
@@ -63,9 +63,9 @@
                             <h3>RENDER</h3>
                             <div class="control-buttons">
                                 <div id="c-b-nine" class="control-button-one">DEFAULT</div>
-                                <div id="c-b-ten" class="control-button-two">POLY</div>
-                                <div id="c-b-eleven" class="control-button-three" onclick="wire()">WIRE</div>
-                                <div id="c-b-twelve" class="control-button-four">HEADLIGHT</div>
+                                <div id="c-b-ten" class="control-button-two">WIRE</div>
+                                <div id="c-b-eleven" class="control-button-three" onclick="onTexture()">TEXTURE</div>
+                                <div id="c-b-twelve" class="control-button-four" onclick="onScene()">SCENE</div>
                             </div>
                             <p>Interested in different renders?</p>
                         </div>
@@ -100,11 +100,8 @@
 <script>
 
     if (typeof images === 'undefined') {
-        const images = ['./assets/images/coke-can.png',
-                    './assets/images/fanta-can.png',
-                    './assets/images/sprite-can.png']
+        const images = ['./assets/images/coke-can.png', './assets/images/fanta-can.png', './assets/images/sprite-can.png']
         const slide = $('.slides-image')
-
         let index = 0
     
 
@@ -129,6 +126,7 @@
         $(`.overlay-msg-${showIndex}`).show()
     }
 
+
     changeImage()
     
     setInterval(() => {
@@ -137,33 +135,84 @@
 
 }
 
-let spinning = false;
-function spin() {
-    spinning = !spinning;
-    document.getElementById('model__RotationTimer').setAttribute('enabled', spinning.toString());
+
+if (typeof spinning === 'undefined') {
+    let spinning = false
+    let wireCount = 0
+
+    function onSpin() {
+        spinning = !spinning
+        document.getElementById('model__RotationTimer').setAttribute('enabled', spinning.toString())
+    }
+
+    function onWire() {
+        wireCount ++
+        let e = document.getElementById('wire')
+        e.runtime.togglePoints(true)
+        e.runtime.togglePoints(true)
+    }
+
+    $('#c-b-five').click(() => {
+        if (spinning) onSpin()
+    })
+
+    $('#c-b-six').click(() => {
+        onSpin()
+    })
+
+    $('#c-b-nine').click(() => {
+        $('#r-1-c-1').css("background-color", '#FBD1CF')
+        while (wireCount % 3) onWire()
+        let rl = $('#model__Texture').attr('url')
+        let newUrl = rl.substring(0, rl.indexOf('_X')) + rl.substring(rl.indexOf('_X') + 2);
+        $('#model__Texture').attr('url', newUrl)
+    })
+
+    $('#c-b-ten').click(() => {
+        onWire()
+    })
 }
 
-function wire() {
-    var e = document.getElementById('wire');
-	e.runtime.togglePoints(true);
-	e.runtime.togglePoints(true);
-}
-
-function preView() {
+function onPreView() {
     document.getElementById('model__Camera 1').setAttribute('bind', 'true');
 }
 
-function topView() {
+function onTopView() {
     document.getElementById('model__Camera 2').setAttribute('bind', 'true');
 }
 
-function bottomView() {
+function onBottomView() {
     document.getElementById('model__Camera 3').setAttribute('bind', 'true');
 }
 
-function frontView() {
+function onFrontView() {
     document.getElementById('model__Camera 4').setAttribute('bind', 'true');
 }
+
+function onZoom(sign) {
+    let e = document.getElementById('wire')
+    e.runtime.zoom(`${sign}600`)
+}
+
+function getRandomColour() {
+  let letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+function onScene() {
+    $('#r-1-c-1').css("background-color", getRandomColour())
+}
+
+function onTexture() {
+    let rl = $('#model__Texture').attr('url')
+    let newUrl = rl.substring(0, rl.length -5)  + '_X' + rl.substring(rl.length -5)
+    $('#model__Texture').attr('url', newUrl)
+}
+
 </script>
 
 <style>
