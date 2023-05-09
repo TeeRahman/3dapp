@@ -1,1 +1,1 @@
-<h1>Story Time</h1>
+<h1>This section was not a requirement.</h1>

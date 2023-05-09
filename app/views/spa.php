@@ -14,8 +14,8 @@ if(isset($_POST['functionName'])) {
 
 
 function drinks() {
-    $data = ['okay'];
-    $commentsData = ['oooo'];
+    $dM = new drinkModel('../../app/core/databases/drinks.db');
+    $descriptions = $dM->getDescriptions();
     require './drinks.view.php';
 }
 
@@ -27,11 +27,11 @@ function story() {
     require './story.view.php';
 }
 
-function cokebottle() {
+function peacetea() {
     $endpoint = 'peace';
     $dM = new drinkModel('../../app/core/databases/drinks.db');
     $drinksData = $dM->getDrinks();
-    $commentsData = $dM->getComments('coke bottle');
+    $commentsData = $dM->getComments('coke bottle'); //Change to peacetea
     require './drink.view.php';
 }
 

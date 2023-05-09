@@ -35,6 +35,17 @@ class drinkModel extends Model {
 
         return $result;
     }
+
+    public function getDescriptions() {
+        $stmt = $this->getAllData('descriptions');
+        $result = null;
+
+        while ($data = $stmt->fetch()) {
+            $result[$data['id']] = $data['desc'];
+        }
+
+        return $result;
+    }
 }
 
 ?>

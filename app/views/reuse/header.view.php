@@ -8,7 +8,7 @@
 
             <div class="nav-container-navlink">
                 <p class="nav-container-navlink-p"><a class="navlink navlink-home">HOME</a> <a class="navlink navlink-story">OUR STORY</a> <a class="navlink navlink-drinks">DRINKS</a></p>
-                <p class="nav-container-navlink-p2"><a class="navlink navlink-cokebottle">{PEACE TEA 3D}</a> <a class="navlink navlink-coke">{COKE 3D}</a> <a class="navlink navlink-costa">{COSTA COFFEE 3D}</a></p>
+                <p class="nav-container-navlink-p2"><a class="navlink navlink-peacetea">{PEACE TEA 3D}</a> <a class="navlink navlink-coke">{COKE 3D}</a> <a class="navlink navlink-costa">{COSTA COFFEE 3D}</a></p>
             </div>
 
             <div class="nav-container-menu">
@@ -24,7 +24,7 @@
                 <a class="navlink navlink-home">HOME</a>
                 <a class="navlink navlink-story">OUR STORY</a>
                 <a class="navlink navlink-drinks">DRINKS</a>
-                <a class="navlink navlink-cokebottle">{PEACE TEA 3D}</a>
+                <a class="navlink navlink-peacetea">{PEACE TEA 3D}</a>
                 <a class="navlink navlink-coke">{COKE 3D}</a>
                 <a class="navlink navlink-costa">{COSTA COFFEE 3D}</a>
             </div>
@@ -72,11 +72,11 @@
         });
     });
 
-    $('.navlink-cokebottle').click(function() {
+    $('.navlink-peacetea').click(function() {
         $.ajax({
         url: '../app/views/spa.php',
         type: 'POST',
-        data: {functionName: 'cokebottle'},
+        data: {functionName: 'peacetea'},
         success: function(response) {
             $("body").empty();
             $("body").html(response);
@@ -107,6 +107,10 @@
         }
         });
     });
+
+    $('.nav-hidden').click(() => {
+        $('#navHidden').toggleClass('nav-show')
+    })
 </script>
 
 <style>
