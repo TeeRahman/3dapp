@@ -31,6 +31,15 @@
 </body>
 </html>
 
+<!-- 
+1. Not much going on here. 
+2. The $descriptions variable contains data from the database with model descriptions. The variable is initiased within spa.php.
+3. Below are AJAX requests made using JQuery. These are requests being made to spa.php for a new view and data which is specific to the button pressed.
+4. In this case, when a user clicks on the Coke model, a request is made to provide a view with appropriate data such as comments which will then be displayed. 
+-->
+
+<!-- QA CHECK 09/05 -->
+
 <script>
 
 $('.r-1-c-1').click(function() {

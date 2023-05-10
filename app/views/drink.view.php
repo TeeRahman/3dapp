@@ -42,10 +42,10 @@
                         <div class="default-text" id="r-2-c-1">
                             <h3>CAMERA</h3>
                             <div class="control-buttons">
-                                <div id="c-b-one" class="control-button-one" onclick="onPreView()">DEFAULT</div>
-                                <div id="c-b-two" class="control-button-two" onclick="onFrontView()">FRONT</div>
-                                <div id="c-b-three" class="control-button-three" onclick="onTopView()">TOP</div>
-                                <div id="c-b-four" class="control-button-four" onclick="onBottomView()">BOTTOM</div>
+                                <div id="c-b-one" class="control-button-one">DEFAULT</div>
+                                <div id="c-b-two" class="control-button-two">FRONT</div>
+                                <div id="c-b-three" class="control-button-three">TOP</div>
+                                <div id="c-b-four" class="control-button-four">BOTTOM</div>
                             </div>
                             <p>Toggle the model view.</p>
                         </div>
@@ -64,8 +64,8 @@
                             <div class="control-buttons">
                                 <div id="c-b-nine" class="control-button-one">DEFAULT</div>
                                 <div id="c-b-ten" class="control-button-two">WIRE</div>
-                                <div id="c-b-eleven" class="control-button-three" onclick="onTexture()">TEXTURE</div>
-                                <div id="c-b-twelve" class="control-button-four" onclick="onScene()">SCENE</div>
+                                <div id="c-b-eleven" class="control-button-three">TEXTURE</div>
+                                <div id="c-b-twelve" class="control-button-four">SCENE</div>
                             </div>
                             <p>Interested in different renders?</p>
                         </div>
@@ -96,6 +96,16 @@
 
 </html>
 
+<!-- 
+1. Variable $endpoint decides what x3d model is displayed and $drinksData provides some information on the drink being displayed on the gallery. $commentsData contains all the comments associated with the model displayed, a for loop is run to display all.
+2. These variables are provided to us from spa.php where they are prepared
+3. Below there are plenty of JQuery call back functions, which basically replicate the onclick function.
+4. Directly under is the code for changing the image for the gallery. Essentially just changes css properties every 30 seconds and depending on image order.
+5. To explain the 'typeof {variable} === 'undefined', it prevents variables being initiated multiple times as that's caused issues. 
+-->
+
+<!-- QA CHECK 09/05 -->
+
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 <script>
 
@@ -125,7 +135,6 @@
         $(`.overlay-msg-${hideIndex}`).hide()
         $(`.overlay-msg-${showIndex}`).show()
     }
-
 
     changeImage()
     
@@ -173,21 +182,31 @@ if (typeof spinning === 'undefined') {
     })
 }
 
-function onPreView() {
-    document.getElementById('model__Camera 1').setAttribute('bind', 'true');
-}
+$('#c-b-one').click(() => {
+    document.getElementById('model__Camera 1').setAttribute('bind', 'true')
+})
 
-function onTopView() {
-    document.getElementById('model__Camera 2').setAttribute('bind', 'true');
-}
+$('#c-b-two').click(() => {
+    document.getElementById('model__Camera 4').setAttribute('bind', 'true')
+})
 
-function onBottomView() {
-    document.getElementById('model__Camera 3').setAttribute('bind', 'true');
-}
+$('#c-b-three').click(() => {
+    document.getElementById('model__Camera 2').setAttribute('bind', 'true')
+})
 
-function onFrontView() {
-    document.getElementById('model__Camera 4').setAttribute('bind', 'true');
-}
+$('#c-b-four').click(() => {
+    document.getElementById('model__Camera 3').setAttribute('bind', 'true')
+})
+
+$('#c-b-eleven').click(() => {
+    let rl = $('#model__Texture').attr('url')
+    let newUrl = rl.substring(0, rl.length -5)  + '_X' + rl.substring(rl.length -5)
+    $('#model__Texture').attr('url', newUrl)
+})
+
+$('#c-b-twelve').click(() => {
+    $('#r-1-c-1').css("background-color", getRandomColour())  
+})
 
 function onZoom(sign) {
     let e = document.getElementById('wire')
@@ -203,17 +222,8 @@ function getRandomColour() {
   return color;
 }
 
-function onScene() {
-    $('#r-1-c-1').css("background-color", getRandomColour())
-}
-
-function onTexture() {
-    let rl = $('#model__Texture').attr('url')
-    let newUrl = rl.substring(0, rl.length -5)  + '_X' + rl.substring(rl.length -5)
-    $('#model__Texture').attr('url', newUrl)
-}
-
 </script>
+
 
 <style>
 html,

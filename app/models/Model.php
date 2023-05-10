@@ -90,3 +90,11 @@ class Model {
 
 
 ?>
+
+<!-- 
+1. This is the Model Class which will be extended by other more specific models in order to interact with databases with specifity and ofcourse much less code/repetition.
+2. Aim here was to include CRUD functions which are likely to meet most circumstances required within this application.
+3. I used PHP Data Objects or PDO as it seemed to be the most common way to interact with SQLite databases and much more within a PHP environment. Very intuitive, very similar to running actual SQLite statements and inclusion of exceptions is brilliant!
+-->
+
+<!-- QA CHECK 09/05 -->

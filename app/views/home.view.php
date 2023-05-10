@@ -26,11 +26,8 @@
                 </div>
 
                 <div class="hero-container-texts-image-hidden"></div>
-
             </div>
-
-            <div class="hero-container-image"></div>
-
+                <div class="hero-container-image"></div>
         </div>
 
         <?php
@@ -54,84 +51,17 @@
                 });
             });
 
-            // $('.navlink-home').click(function() {
-            //     $.ajax({
-            //     url: '../app/views/spa.php',
-            //     type: 'POST',
-            //     data: {functionName: 'home'},
-            //     success: function(response) {
-            //         $("body").empty();
-            //         $("body").html(response);
-            //     }
-            //     });
-            // });
-
-            // $('.navlink-story').click(function() {
-            //     $.ajax({
-            //     url: '../app/views/spa.php',
-            //     type: 'POST',
-            //     data: {functionName: 'story'},
-            //     success: function(response) {
-            //         $(".hero-container").empty();
-            //         $(".hero-container").html(response);
-            //     }
-            //     });
-            // });
-
-            // $('.navlink-drinks').click(function() {
-            //     $.ajax({
-            //     url: '../app/views/spa.php',
-            //     type: 'POST',
-            //     data: {functionName: 'drinks'},
-            //     success: function(response) {
-            //         $(".hero-container").empty();
-            //         $(".hero-container").html(response);
-            //     }
-            //     });
-            // });
-
-            // $('.navlink-cokebottle').click(function() {
-            //     $.ajax({
-            //     url: '../app/views/spa.php',
-            //     type: 'POST',
-            //     data: {functionName: 'cokebottle'},
-            //     success: function(response) {
-            //         $("body").empty();
-            //         $("body").html(response);
-            //     }
-            //     });
-            // });
-
-            // $('.navlink-coke').click(function() {
-            //     $.ajax({
-            //     url: '../app/views/spa.php',
-            //     type: 'POST',
-            //     data: {functionName: 'coke'},
-            //     success: function(response) {
-            //         $("body").empty();
-            //         $("body").html(response);
-            //     }
-            //     });
-            // });
-
-            // $('.navlink-costa').click(function() {
-            //     $.ajax({
-            //     url: '../app/views/spa.php',
-            //     type: 'POST',
-            //     data: {functionName: 'costa'},
-            //     success: function(response) {
-            //         $(".hero-container").empty();
-            //         $(".hero-container").html(response);
-            //     }
-            //     });
-            // });
-
         });
-
-
 
     </script>
     </html>    
+
+<!-- 
+1. Very simple home page (default page)
+2. The script tag contains JQuery for the black button. When pressed, an AJAX POST request is made to spa.php, which is the main controller for the single page application.
+3. I provide a function name of 'drinks' as a data parameter. Should the request be succesful, i.e. if the spa.php file contains a function called drinks and is callable, data is returned and then displayed within the body. 
+-->
+
 
 <style>
 html,

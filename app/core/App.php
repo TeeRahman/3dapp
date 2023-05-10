@@ -38,3 +38,14 @@ class App {
 
     }
 }
+
+?>
+
+<!--
+1. The App class is responsible for initiating the correct controller and running the following method of the controller. 
+2. (Optional) The first paramater of the URL is used as controller should that controller exist. The second parameter is used as the method should it exist within the given controller.
+3. If the controller does not exist an error page is displayed, if the controller does exist but the method does not, the default index method of the controller will instead be called.
+4. As users are not required to provide URL params, the default controller is 'Home' with 'index' method.
+-->
+
+<!-- QA CHECK 09/05 -->

@@ -49,3 +49,11 @@ class drinkModel extends Model {
 }
 
 ?>
+
+<!-- 
+1. This is an example of a model which is specific in providing data for each drink. The model will utilise the inherited CRUD methods from Model Class to craft specific methods appropriate for the Drinks controller.
+2. This class now enables the 'Drinks' controller to interact with the database by just creating an instance. 
+3. The most common use of this model was to obtain drinks data such as model descriptions and comments. 
+-->
+
+<!-- QA CHECK 09/05 -->
