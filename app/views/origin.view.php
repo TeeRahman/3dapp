@@ -12,7 +12,12 @@
         <p class='statement-of-originality'>These web pages are submitted as part requirement for the degree of BSc Finance & Technology (Hons) at the University of Sussex. They are the product of my own labour except where indicated in the web page content. These web pages or contents may be freely copied and distributed provided the source is acknowledged.</p>
 
         <p class='references'>References</p>
-        <a class='reference' href=''>Jay</a>
+        <br>
+        <a href='https://youtu.be/q0JhJBYi4sw'>PHP MVC Framework From Scratch by Quick Programming (2022)</a>
+        <br>
+        <a href='https://youtu.be/OsCTzGASImQ'>PHP MVC Application Playlist by Codecourse (2014)</a>
+        <br>
+        <a href='https://youtu.be/nU0KDn-vLT4'>PHP & AJAX by Traversy Media (2017)</a>
     </div>
 </body>
 </html>
@@ -56,6 +61,12 @@ body {
 }
 
 .reference {
+    text-decoration: none;
+    color: black;
+    font-size: 1.3rem;
+}
+
+a {
     text-decoration: none;
     color: black;
     font-size: 1.2rem;
