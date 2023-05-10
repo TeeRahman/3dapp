@@ -95,6 +95,10 @@ body {
     min-height: 100vh;
 }
 
+.app-container {
+    height: 87vh;
+}
+
 .hero-container {
     position: relative;
     z-index: 1;
@@ -116,6 +120,7 @@ body {
     min-height: 450px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 
@@ -190,6 +195,10 @@ body {
         width: 60%;
         margin-bottom: 20px; 
         min-width: 200px;
+    }
+
+    .overlay:hover {
+        font-size: 1.2rem;
     }
 
 }
